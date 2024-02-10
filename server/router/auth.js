@@ -27,9 +27,9 @@ router.post('/sign-up', async (req, res) => {
     // save
     await user.save()
     res.send('Register Successfully')
-  } catch (error) {
-    console.log(error.message)
-    res.status(500).send({ message: error.message })
+  } catch (err) {
+    console.log(err.message)
+    res.status(500).send({ message: err.message })
   }
 })
 
@@ -53,16 +53,16 @@ router.post('/sign-in', async (req, res) => {
         },
       }
       // generate toke
-      jwt.sign(payload, 'jwtsecret', { expiresIn: '1d' }, (error, token) => {
-        if (error) throw error
+      jwt.sign(payload, 'jwtsecret', { expiresIn: '1d' }, (err, token) => {
+        if (err) throw err
         res.json({ token, payload })
       })
     } else {
-      return res.status(400).send({ message: 'User Not Found!!!' })
+      return res.status(400).send({ message: 'User Not Found!' })
     }
-  } catch (error) {
-    console.log(error.message)
-    res.status(500).send({ message: error.message })
+  } catch (err) {
+    console.log(err.message)
+    res.status(500).send({ message: err.message })
   }
 })
 

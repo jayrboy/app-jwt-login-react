@@ -4,7 +4,7 @@ import mongoose from 'mongoose'
 mongoose
   .connect('mongodb://localhost/db1')
   .then(() => console.log('MongoDB Connected!'))
-  .catch((e) => console.log('Connection Failed ', e))
+  .catch((err) => console.log(err))
 
 //* User Model
 const userSchema = mongoose.Schema(
